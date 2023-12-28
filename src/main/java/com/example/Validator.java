@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Validator {
 
     public boolean validateName(String name) {
-        Pattern pattern = Pattern.compile("^[A-Z].{2,}$");
+        Pattern pattern = Pattern.compile("^[A-Z][a-z]{2,}$");
         boolean matcher = pattern.matcher(name).matches();
         if (!matcher)
             System.out.println("First latter should be Capital with minimum 3 latters ");
