@@ -33,7 +33,7 @@ public class Validator {
     }
 
     public boolean validatePassword(String password) {
-        Pattern pattern = Pattern.compile("^(?=.*[A-Z]).{8,}$");
+        Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*\\d).{8,}$");
         boolean matcher = pattern.matcher(password).matches();
         if (!matcher)
             System.out.println("Email format is incorrect");
