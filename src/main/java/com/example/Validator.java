@@ -10,17 +10,17 @@ public class Validator {
         if (!matcher)
             System.out.println("First latter should be Capital with minimum 3 latters ");
 
-        return true;
+        return matcher;
     }
 
     public boolean validateEmail(String email) {
         Pattern pattern = Pattern
-                .compile("^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z]+(?:\\.[a-zA-Z]+)*(?:\\.[a-zA-Z]{2,})$");
+                .compile("^[a-zA-Z0-9]+(?:[\\+-\\.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z]+){1,2}$");
         boolean matcher = pattern.matcher(email).matches();
-        if (!matcher)
-            System.out.println("Email format is incorrect");
+        // if (!matcher)
+        // System.out.println("Email format is incorrect");
 
-        return true;
+        return matcher;
     }
 
     public boolean validatePhone(String phone) {
@@ -36,7 +36,8 @@ public class Validator {
         Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$");
         boolean matcher = pattern.matcher(password).matches();
         if (!matcher)
-            System.out.println("Email format is incorrect");
+            System.out.println(
+                    "Passsword should contaion 1 uppderCase , 1 SpecialCase , 1 digit  and minimum length of 8");
 
         return matcher;
     }
