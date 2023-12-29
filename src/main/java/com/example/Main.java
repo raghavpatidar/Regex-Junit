@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         User user = new User("Raghav", "Patidar",
                 "abc.xyz@bl.co.in", "91 9977649723",
-                "sdjVnadc@dcf23456");
+                "@R1qweqa");
         String[] correctEmail = {
                 "abc@yahoo.com",
                 "abc-100@yahoo.com",

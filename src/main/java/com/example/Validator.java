@@ -17,8 +17,8 @@ public class Validator {
         Pattern pattern = Pattern
                 .compile("^[a-zA-Z0-9]+(?:[\\+-\\.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z]+){1,2}$");
         boolean matcher = pattern.matcher(email).matches();
-        // if (!matcher)
-        // System.out.println("Email format is incorrect");
+        if (!matcher)
+            System.out.println("Email format is incorrect");
 
         return matcher;
     }
