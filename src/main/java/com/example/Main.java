@@ -1,10 +1,13 @@
 package com.example;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidUserDetailsException, InvalidDataException {
+
         User user = new User("Raghav", "Patidar",
                 "abc.xyz@bl.co.in", "91 9977649723",
                 "@R1qweqa");
+        System.out.println(user);
+
         String[] correctEmail = {
                 "abc@yahoo.com",
                 "abc-100@yahoo.com",

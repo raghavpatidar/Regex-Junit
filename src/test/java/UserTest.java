@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import com.example.Validator;
+import com.example.InvalidDataException;
 
 public class UserTest {
 
@@ -18,14 +19,18 @@ public class UserTest {
 
     @ParameterizedTest
     @ValueSource(strings = { "Raghav", "Patidar", "Aditya", "Yadav", "Kushal", "Pandey" })
-    public void validateCorrectNameHappy(String str) {
+    public void validateCorrectNameHappy(String str) throws InvalidDataException {
         assertTrue(validator.validateName(str));
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "raghav", "PaTidar", "ADTtya", "yaDav", "K232ushal", "Pan@#$dey" })
     public void validateInCorrectNameSad(String str) {
-        assertFalse(validator.validateName(str));
+        try {
+            assertFalse(validator.validateName(str));
+        } catch (InvalidDataException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @ParameterizedTest
@@ -40,7 +45,7 @@ public class UserTest {
             "abc@gmail.com.co",
             "abc+100@gmail.co",
     })
-    public void validateCorrectEmailHappy(String email) {
+    public void validateCorrectEmailHappy(String email) throws InvalidDataException {
         assertTrue(validator.validateEmail(email));
     }
 
@@ -61,31 +66,43 @@ public class UserTest {
             "abc@gmail.com.aa.au",
     })
     public void validateInCorrectEmailSAD(String email) {
-        assertFalse(validator.validateEmail(email));
+        try {
+            assertFalse(validator.validateEmail(email));
+        } catch (InvalidDataException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "91 9977649723", "989 9988665533", "1 7788554411" })
-    public void validateCorrectPhoneHappy(String phone) {
+    public void validateCorrectPhoneHappy(String phone) throws InvalidDataException {
         assertTrue(validator.validatePhone(phone));
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "91 99776497", "9899988665533", "1 778855441a" })
     public void validateInCorrectPhonesad(String phone) {
-        assertFalse(validator.validatePhone(phone));
+        try {
+            assertFalse(validator.validatePhone(phone));
+        } catch (InvalidDataException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "@Reur985", "!@#$98754addFas", "!1Aa123awsed" })
-    public void validateCorrectPasswordhappy(String password) {
+    public void validateCorrectPasswordhappy(String password) throws InvalidDataException {
         assertTrue(validator.validatePassword(password));
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "asd", "raghav", "!1a123awsed", "raghavP1123" })
     public void validateInCorrectPasswordsad(String password) {
-        assertFalse(validator.validatePassword(password));
+        try {
+            assertFalse(validator.validatePassword(password));
+        } catch (InvalidDataException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
